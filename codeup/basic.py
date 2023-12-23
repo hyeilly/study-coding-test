@@ -187,8 +187,7 @@ def white():
 
 # def convertwhite():
 def sugarSnack():
-    h, w = input().split()
-    h, w = int(h), int(w)
+    h, w = map(int, input().split())
     pan = []
     for h_ in range(h):
         pan.append([])
@@ -223,6 +222,16 @@ def sugarSnack():
             print(pan[p][p_], end=' ')
         print()
 
+def togetherSolve():
+    a, b, c = map(int, input().split())
+    print(a, b, c)
+    d = 1
+    while d % a != 0 or d % b != 0 or d % c != 0:
+        d += 1
+    print(d)
+
+# def deposite():
+
 if __name__ == '__main__':
     # evenSum()
     # wantStr()
@@ -242,4 +251,5 @@ if __name__ == '__main__':
     # callAttend3()
     # white()
     # convertwhite()
-    sugarSnack()
+    # sugarSnack()
+    togetherSolve()

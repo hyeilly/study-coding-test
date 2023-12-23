@@ -112,19 +112,22 @@ class Implementation:
 
     def ex3(self):
         """
-        1 현재 위치에서 현재 방향 기준 => 왼쪽 방향 (반시계 방향으로 90도 회전한 방향)부터 차례대로 - 패턴 O, 육지를 한번 카운트 하면
-        0은 북쪽 -> 3 서쪽으로 회전
+        1 현재 위치에서 현재 방향 기준 => 왼쪽 방향 (반시계 방향으로 90도 회전한 방향)부터 차례대로
+         - 패턴 O, 육지를 한번 카운트 하면
+         - 0은 북쪽 -> 3 서쪽으로 회전
         2 캐릭터 바로 왼쪽
-        - 아직 가보지 않은 칸이 없다면 왼쪽방향으로 회전 2 남쪽 => 왼쪽 한칸 전진
-        - 왼쪽방향에 가보지 않은 칸 없다면 왼쪽방향으로 회전 1 동쪽 => 1단계로
+         - 아직 가보지 않은 칸이 없다면 왼쪽방향으로 회전 2 남쪽 => 왼쪽 한칸 전진
+         - 왼쪽방향에 가보지 않은 칸 없다면 왼쪽방향으로 회전 1 동쪽 => 1단계로
         3 네 방향 모두 이미 가본 칸 or 바다 이면
-        - 바라본 방향 유지 -> 한칸 뒤로 -> 1다계로
-        뒤쪽 방향 바다인 칸이면 뒤로 갈 수 없어 멈춤
-        시작점도 횟수에 포함
+         - 바라본 방향 유지 -> 한칸 뒤로 -> 1다계로
+           뒤쪽 방향 바다인 칸이면 뒤로 갈 수 없어 멈춤
+           시작점도 횟수에 포함
         """
         n, m = 4, 4
         # 내 위치 북쪽
-        x, y, lotate = 1, 1, 0
+        x = 1
+        y = 1
+        lotate = 0
         li = [
             [1, 1, 1, 1],
             [1, 0, 0, 1],
@@ -132,23 +135,22 @@ class Implementation:
             [1, 1, 1, 1]
         ]
         c = [0, 1, 2, 3]
-        position = [x, y]
         count = 1
         limit = 0
+        lotate = c[lotate - 1]
+        li[x][y] = 1
         while True:
-            # print(x, y)
-            # print(lotate)
             if lotate == 0:
                 # 북쪽  y -= 1
                 if li[x][y - 1] == 0:
                     y -= 1
-
                     li[x][y] = 1
                     limit = 0
                     count += 1
-                    # print(x, y, 0)
+                    print(f"북:x{x} y{y}")
                 else:
                     limit += 1
+                    print(f"북:limit{limit}")
             elif lotate == 1:
                 # 동쪽 x -= 1
                 if li[x - 1][y] == 0:
@@ -156,33 +158,39 @@ class Implementation:
                     li[x][y] = 1
                     limit = 0
                     count += 1
+                    print(f"동:x{x} y{y}")
                 else:
                     limit += 1
+                    print(f"동:limit{limit}")
             elif lotate == 2:
-                print(x, y + 1, li[x][y + 1], 2)
                 # 남쪽
                 if li[x][y + 1] == 0:
                     y += 1
                     li[x][y] = 1
                     limit = 0
                     count += 1
+                    print(f"남:x{x} y{y}")
                 else:
                     limit += 1
+                    print(f"남:limit{limit}")
             elif lotate == 3:
-                # print(li[x + 1][y], 3)
                 if li[x + 1][y] == 0:
                     x += 1
                     li[x][y] = 1
+                    print(x, y)
                     limit = 0
                     count += 1
+                    print(f"서:x{x} y{y}")
                 else:
                     limit += 1
+                    print(f"서:limit{limit}")
+
                 # 서쪽 x += 1
             lotate = c[lotate - 1]
             # 4방향을 체크
             if limit >= 4:
                 print(x, y)
-                # print(count)
+                print(f"count:{count}")
                 break
 
 
