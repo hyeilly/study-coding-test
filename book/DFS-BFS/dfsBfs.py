@@ -1,3 +1,4 @@
+from collections import deque
 class DfsBfs:
     def __init__(self):
         pass
@@ -84,6 +85,34 @@ class DfsBfs:
         print(ice)
         result += 1
         print(result)
+    def ex2(self):
+        """
+        N X M 크기 직사각형 형태 미로
+        미로에는 여러 마리 괴물이 있어 피해 탈출. 동빈 위치는 (1, 1)  출구는 (N, M)
+        괴물이 있는 부분은 0, 괴물이 없는 부분은 1
+        인덱스는 1, 1으로 시작
+        """
+        n, m = 5, 6
+        ice = [
+            [1, 0, 1, 0, 1, 0],
+            [1, 1, 1, 1, 1, 1],
+            [0, 0, 0, 0, 0, 1],
+            [1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1],
+        ]
+        cnt = 0
+        queue = deque()
+        # 시작노드 ice[1][1]
+        queue.append([1, 1])
+        # 꺼내고 인접노드 ice[2][1]  0은 괴물이 있음
+        queue.remove([1, 1])
+        cnt += 1
+        queue.append([2, 1])
+        print(queue)
+        # 꺼내고 인접노드 ice[2][0] ice[2][2]
+
+
 
 if __name__ == '__main__':
-    DfsBfs.ex1('')
+    DfsBfs.ex2('')
+    # DfsBfs.ex1('')
