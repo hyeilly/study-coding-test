@@ -50,6 +50,34 @@ def ants():
             else:
                 print(str(j))
 
+def convert():
+    pan = []
+    for i in range(19):
+        pan_det = list(map(int, input().split()))
+        pan.append(pan_det)
+
+    n = int(input())
+
+    for i in range(n):
+        x, y = map(int, input().split())
+        for j in range(1, 20):
+            if pan[j-1][y-1] == 0:
+                pan[j-1][y-1] = 1
+            else:
+                pan[j-1][y-1] = 0
+
+            if pan[x-1][j-1] == 0:
+                pan[x-1][j-1] = 1
+            else:
+                pan[x-1][j-1] = 0
+    print(pan)
+    for p in pan:
+        for (jdx, j) in enumerate(p):
+            if jdx < len(p) - 1:
+                print(j, end=' ')
+            else:
+                print(str(j))
 
 # sugar_snack()
-ants()
+# ants()
+convert()
