@@ -93,4 +93,5 @@ class DfsBfsSolution:
         print(bfs(0, 0))
 
 if __name__ == '__main__':
-    DfsBfsSolution.ex2_solution1('')
+    DfsBfsSolution.ex1_solution1('')
+    # DfsBfsSolution.ex2_solution1('')
