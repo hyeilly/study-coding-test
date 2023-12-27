@@ -125,7 +125,6 @@ class DfsBfs:
           이면서 아직 방문하지 않은 지점이 있다면 해당 지점 방문
         2 방문한 지점에서 다시 상,하,좌,우를 살펴보면서 방문 다시 진행
 
-        return 이 9가 나옴...
         """
         n, m = 4, 5
         graph = [
@@ -134,97 +133,76 @@ class DfsBfs:
             [1, 1, 1, 1, 1],
             [0, 0, 0, 0, 0],
         ]
-        stack = []
-
-        def check_ewsn(x, y, type):
-            if x <= -1 or x >= n or y <= -1 or y >= m:
+        def dfs_check(x, y):
+            # 해당 영역이 확인 가능하지 않은 위치라면 해당 함수 나가기
+            if x < 0 or x >= n or y < 0 or y >= m:
                 return False
-            if type == 'east':
-                if (graph[x][y + 1] == 0):
-                    return [x, y + 1]
+            # 0일때 얼음을 얼리기
+            if graph[x][y] == 0:
+                # 얼음 얼리기 가능
+                graph[x][y] = 1
+                # (0, 0) 부터 상,하,좌,우 체크
+                # 위쪽 체크
+                dfs_check(x - 1, y)
+                # 아래쪽 체크
+                dfs_check(x + 1, y)
+                # 왼쪽 체크
+                dfs_check(x, y - 1)
+                # 오른쪽 체크
+                dfs_check(x, y + 1)
+                return True
+            return False
 
-            elif type == 'west':
-                if (graph[x][y - 1] == 0):
-                    return [x, y-1]
-            elif type == 'south':
-                if(graph[x + 1][y] == 0):
-                    return [x+1, y]
-            elif type == 'north':
-                if(graph[x - 1][y] == 0):
-                    return [x-1, y]
-
-
-        def dfs_func(x, y):
-            result_arr = [[x, y]]
-            print(x, y)
-            if x <= -1 or x >= n or y <= -1 or y >= m:
-                return False
-            for i in result_arr:
-                x = i[0]
-                y = i[1]
-                if graph[x][y] == 0:
-                    print(f"{x},{y}과 연결된 노드 ")
-                    east = check_ewsn(x, y, 'east')
-                    west = check_ewsn(x, y, 'west')
-                    south = check_ewsn(x, y, 'south')
-                    north = check_ewsn(x, y, 'north')
-                    print(east)
-                    print(west)
-                    print(south)
-                    print(north)
-                return False
         result = 0
+        # graph[0][0]부터 확인
         for i in range(n):
             for j in range(m):
-                if dfs_func(i, j) == True:
+                if dfs_check(i, j) == True:
                     result += 1
         print(result)
-        print(stack)
+
+
     def ex2_solve(self):
         n, m = 5, 6
         graph = [
-            [1,0,1,0,1,0],
-            [1,1,1,1,1,1],
-            [0,0,0,0,0,1],
-            [1,1,1,1,1,1],
-            [1,1,1,1,1,1]
+            [1, 0, 1, 0, 1, 0],
+            [1, 1, 1, 1, 1, 1],
+            [0, 0, 0, 0, 0, 1],
+            [1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1]
         ]
         # 이동할 네 방향 정의 (상, 하, 좌, 우)
         dx = [-1, 1, 0, 0]
         dy = [0, 0, -1, 1]
-
-        # BFS 소스코드 구현
-        def bfs(x, y):
-            # 큐(Queue) 구현을 위해 deque 라이브러리 사용
+        def bfs_check(x, y):
+            # queue에 먼저 넣기
             queue = deque()
             queue.append((x, y))
-            # 큐가 빌 때까지 반복
+            # queue에 값이 존재할 때 반복문 수행
             while queue:
+                # 먼저들어간 것 삭제
                 x, y = queue.popleft()
-                # 현재 위치에서 네 방향으로의 위치 확인
+                # 상,하,좌,우 확인
                 for i in range(4):
                     nx = x + dx[i]
                     ny = y + dy[i]
-                    # 미로 찾기 공간을 벗어난 경우 무시
-                    if nx < 0 or ny < 0 or nx >= n or ny >= m:
+                    # 갈 수 있는지 확인
+                    if nx < 0 or nx >= n or ny < 0 or ny >= m:
+                        # 갈 수 없는 곳이라면 다음 반복문으로
                         continue
-                    # 벽인 경우 무시
                     if graph[nx][ny] == 0:
+                        # 벽인 곳임 갈수 없어 다음 반복문으로
                         continue
-                    # 해당 노드를 처음 방문하는 경우에만 최단 거리 기록
                     if graph[nx][ny] == 1:
                         graph[nx][ny] = graph[x][y] + 1
                         queue.append((nx, ny))
-            # 가장 오른쪽 아래까지의 최단 거리 반환
             return graph[n - 1][m - 1]
-
-        # BFS를 수행한 결과 출력
-        print(bfs(0, 0))
+        print(bfs_check(0, 0))
 
 
 
 if __name__ == '__main__':
     # DfsBfs.ex2('')
     # DfsBfs.ex1('')
-    DfsBfs.ex1_solve('')
-    # DfsBfs.ex2_solve('')
+    # DfsBfs.ex1_solve('')
+    DfsBfs.ex2_solve('')
