@@ -15,7 +15,7 @@ array.sort()
 print(array)
 
 # key 매개변수를 입력으로 받을 수 있음
-# key 값으로는 하나의 함수가 들어가야 하며 이것이 정려려 기준이 됨
+# key 값으로는 하나의 함수가 들어가야 하며 이것이 정렬 기준이 됨
 array_ = [('바나나', 2), ('사과', 5), ('당근', 3)]
 def setting(data):
     return data[1]
