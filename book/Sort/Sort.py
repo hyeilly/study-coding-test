@@ -46,18 +46,16 @@ def scoreSort_insertion():
     result = []
 
     for i in range(n):
-        array = []
+        # array = []
         data = input().split()
-        array.append(data[0])
-        array.append(int(data[1]))
-        tuple_ = tuple(array)
-        result.append(tuple_)
+        result.append(tuple(data[0], int(data[1])))
+        # result.append(array)
     # 첫번째 데이터는 고정, 두번째 데이터부터 시작
     for r in range(1, len(result)):
         # 뒤에서부터 데이터 비교 시작
         for i in range(r, 0, -1):
             if result[i][1] < result[i - 1][1]:
-                result[i], result[i-1] = result[i-1], result[i]
+                result[i], result[i - 1] = result[i - 1], result[i]
             else:
                 break
     for i in result:
