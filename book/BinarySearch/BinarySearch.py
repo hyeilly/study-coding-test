@@ -68,16 +68,18 @@ def make_ricecake():
         for i in range(len(rc)):
             if rc[i] - mid > 0:
                 cutting_sum += (rc[i] - mid)
-        print(f"start : {start}, end: {end}, mid:{mid}, sum:{cutting_sum}")
-        if cutting_sum > m:
+
+        if cutting_sum >= m:
+            result = mid
             start = mid + 1
-            continue
+            print(f"if : start : {start}, end: {end}, mid:{mid}, sum:{cutting_sum}")
+            # continue
         else:
-            print(f"start:{start}, end:{end}, mid: {mid}")
             end = mid - 1
-            print(end)
-            result = end - 1
-        break
+            print(f"else: start:{start}, end:{end}, mid: {mid}, sum:{cutting_sum}")
+            # result = end - 1
+            # start += 1
+        # break
         # break
         # for i in range()
         # if cutting_sum > m:
