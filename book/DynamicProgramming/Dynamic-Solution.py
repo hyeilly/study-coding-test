@@ -49,4 +49,35 @@ def antWar():
     # 계산된 결과 출력
     print(d[n-1])
 
+def construction():
+    n = int(input())
+    d = [0] * 1001
+
+    d[1] = 1
+    d[2] = 3
+    # BottomUp
+    for i in range(3, n + 1):
+        d[i] = d[i - 1] + 2 * d[i - 2] % 796796
+    print(d[n])
+
+def efficientMoney():
+    n, m = map(int, input().split())
+    array = []
+    for i in range(n):
+        array.append(int(input()))
+    d = [1001] * (m + 1)
+
+    # BottomUp
+    d[0] = 0
+    for i in range(n):
+        for j in range(array[i], m + 1):
+            # (i - k)원을 만드는 방법이 존재하는 경우
+            if d[j - array[i]] != 10001:
+                d[j] = min(d[j], d[j - array[i]] + 1)
+    # 계산된 결과 출력
+    # 최종적으로 M원을 만드는 방법이 없는 경우
+    if d[m] == 10001:
+        print(-1)
+    else:
+        print(d[m])
 antWar()
