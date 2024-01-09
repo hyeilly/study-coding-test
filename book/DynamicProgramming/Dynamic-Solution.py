@@ -63,8 +63,11 @@ def construction():
 def efficientMoney():
     n, m = map(int, input().split())
     array = []
+    # 적은 금액부터 큰 금액까지 확인하며 차례대로 만들 수 있는 최소한의 화폐 개수
+    # 금액 i => 만들 수 있는 최소한의 화폐 개수를 ai, 화폐 단위 k
     for i in range(n):
         array.append(int(input()))
+
     d = [1001] * (m + 1)
 
     # BottomUp
@@ -80,4 +83,4 @@ def efficientMoney():
         print(-1)
     else:
         print(d[m])
-antWar()
+efficientMoney()
