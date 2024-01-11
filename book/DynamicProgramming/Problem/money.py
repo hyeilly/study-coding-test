@@ -1,5 +1,5 @@
-n, k = 2, 15
-array = [2, 3]
+n, k = 3, 7
+array = [2, 3, 5]
 # n, k = 3, 4
 # array = [3, 5, 7]
 
@@ -9,10 +9,12 @@ array = [2, 3]
 d = [10001] * (k + 1)
 i = 2
 d[0] = 0
-
+print(d)
 for i in array:
     for j in range(i, k+1):
-        d[j] = min(d[j - i] + 1, d[j])
+        if d[j - i] != 10001:
+            d[j] = min(d[j - i] + 1, d[j])
+
 
 if d[k] > 10000:
     print(-1)
