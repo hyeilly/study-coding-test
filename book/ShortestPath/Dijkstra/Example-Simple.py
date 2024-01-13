@@ -16,7 +16,7 @@ graph = {
 node = [1, 2, 3, 4, 5, 6]
 distance = [int(1e9)] * len(node)
 status = [False] * len(node)
-print(status)
+
 # 출발 노드에서 출발 노드의 거리는 0
 distance[0] = 0
 
@@ -34,6 +34,7 @@ for t in test:
                 distance[key] = cal
     status[myStepIndex] = True
     print(distance)
+print(status)
 
 # step 2
 # firstStepIndex를 제외하고 최솟값을 찾아야함
