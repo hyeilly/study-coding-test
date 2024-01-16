@@ -8,6 +8,7 @@ def find_parent(parent, x):
 
 # 노드 5의 루트 찾기 위해 노드5 ~ 노드1 순서대로 부모노드 거슬러 올라감 => O(V)
 # 경로 압축 기법(path compression)
+# find 함수를 재귀적으로 호출한 뒤 부모 테이블 값 갱신
 def find_parent_path_comp(parent, x):
     if parent[x] != x:
         parent[x] = find_parent_path_comp(parent, parent[x])
@@ -49,6 +50,10 @@ for i in range(1, v + 1):
 print()
 
 # 부모 테이블 내용 출력
+# union 연산 효과적으로 수행하기 위해 '부모 테이블' 항상 가지고 있어야함
+# 루트 노드 즉시 계산할 수 없음
+# 부모 테이블을 계속해서 확인하며 거슬러 올라감
+# 결과적으로 노드 1 확인 시 더 이상 부모 노드가 없어 최종 루트노드
 print('부모 테이블: ', end='')
 for i in range(1, v + 1):
     print(parent[i], end=' ')

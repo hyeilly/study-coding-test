@@ -31,9 +31,11 @@ for _ in range(e):
     a, b, cost = map(int, input().split())
     # 비용순으로 정렬하기 위해서 튜플의 첫 번째 원소를 비용으로 설정
     edges.append((cost, a, b))
+    print(f"edges:{edges}")
 
 # 간선을 비용순으로 정렬
 edges.sort()
+print(f"sort edges: {edges}")
 
 # 간선을 하나씩 확인하며
 for edge in edges:
