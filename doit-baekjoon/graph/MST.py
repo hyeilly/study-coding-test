@@ -10,7 +10,9 @@ def find(target):
     if idx_list[target] == target:
         return target
     else:
-        find(idx_list[target])
+        # find(idx_list[target])
+        idx_list[target] = find(idx_list[target])
+        return idx_list[target]
 
 def union(data, w):
     idx_list[data] = w
