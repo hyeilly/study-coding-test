@@ -99,13 +99,11 @@ def print_sum():
             list.append(A + B)
     for i in list:
         print(i)
-
-list = []
-for i in range(5):
-    A, B = map(int, input().split())
-    list.append(A + B)
-for i in list:
-    print(i)
-
-
+def not_input_des_for():
+    while(True):
+        try:
+            a, b = map(int, input().split())
+            print(a + b)
+        except:
+            break
 

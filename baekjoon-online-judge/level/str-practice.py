@@ -64,10 +64,32 @@ def constants():
         result.append(int(n))
     print(max(result))
 
+def not_input_des_str():
+    while (True):
+        try:
+            s = input()
+            print(s)
+        except:
+            break
+
+def dial_grandma():
+    dial = ['', 'ABC', 'DEF', 'GHI', 'JKL', 'MNO', 'PQRS', 'TUV', 'WXYZ']
+
+    S = list(input())
+    cnt = 0
+    for (dx, d) in enumerate(dial):
+        for s in S:
+            if s in d:
+                cnt += dx + 2
+    print(cnt)
+
 # from string import ascii_lowercase
 # alpha_list = list(ascii_lowercase)
 # alpha_check = list(0 for _ in range(24))
-# print(alpha_list)
 # S = list(input())
-# print(S)
-
+# for (idx, i) in enumerate(alpha_list):
+#     for s in S:
+#         if i == s:
+#             alpha_check[idx] = idx
+#             print(idx)
+# print(alpha_check)
