@@ -58,10 +58,28 @@ def remain():
         list.append(data%42)
     print(len(set(list)))
 
-N, M = map(int, input().split())
-list = [i for i in range(1, N + 1)]
-new_list = [-1 for _ in range(1, N + 1)]
-for _ in range(M):
-    i, j = map(int, input().split())
-    for k in range(j - 1, i - 2 , -1):
-        print(f"k:{k} ")
+def reverse_ball():
+    N, M = map(int, input().split())
+    list = [i for i in range(1, N + 1)]
+    for _ in range(M):
+        i, j = map(int, input().split())
+        reverse_list = list[i - 1 : j]
+        list = list[0:i-1] + reverse_list[::-1] + list[j:]
+    for l in list:
+        print(l, end=' ')
+
+def calc_avg():
+    # 실제 정답과 출력값의 절대오차 또는 상대오차가 10-2 이하이면 정답
+    # => 소수점 제한없이 출력
+    N = int(input())
+    score = list(map(int, input().split()))
+    M = max(score)
+    for (sdx, s) in enumerate(score):
+        fix = float(s / M * 100)
+        score[sdx] = fix
+
+    total = 0
+    for i in score:
+        total += i
+    print(float(total / N))
+
