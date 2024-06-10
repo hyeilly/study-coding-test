@@ -83,13 +83,18 @@ def dial_grandma():
                 cnt += dx + 2
     print(cnt)
 
-# from string import ascii_lowercase
-# alpha_list = list(ascii_lowercase)
-# alpha_check = list(0 for _ in range(24))
-# S = list(input())
-# for (idx, i) in enumerate(alpha_list):
-#     for s in S:
-#         if i == s:
-#             alpha_check[idx] = idx
-#             print(idx)
-# print(alpha_check)
+def find_alpha():
+    from string import ascii_lowercase
+    alpha_list = list(ascii_lowercase)
+    S = list(input())
+    for (sdx, s) in enumerate(S):
+        if s in alpha_list:
+            idx = alpha_list.index(s)
+            alpha_list[idx] = sdx
+    for (adx, a) in enumerate(alpha_list):
+        if type(a) != int:
+            alpha_list[adx] = -1
+    for a in alpha_list:
+        print(a, end=' ')
+
+
