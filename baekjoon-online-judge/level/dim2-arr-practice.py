@@ -30,11 +30,19 @@ def procession_max():
     print(temp)
     print(temp_row, temp_column)
 
-arr = []
-for _ in range(5):
-    input_data = list(input())
-    arr.append(input_data)
+def vertical_read():
+    arr = []
+    for _ in range(5):
+        arr.append(list(input()))
+    max_len = 0
+    for a in arr:
+        if max_len < len(a):
+            max_len = len(a)
+    result = ''
+    for k in range(max_len):
+        for i in range(5):
+            if len(arr[i]) > k:
+                result += arr[i][k]
 
-result = ''
+    print(result)
 
-print(len(arr))

@@ -64,30 +64,43 @@ def word_study():
 
     # print(i * 3 - 1)
 
+#
+# score = {
+#     "A+": 4.5,
+#     "A0": 4.0,
+#     "B+": 3.5,
+#     "B": 3.0,
+#     "C+": 2.5,
+#     "C0": 2.0,
+#     "D+": 1.5,
+#     "D": 1.0,
+#     "F": 0.0
+# }
+# all = 0
+# cnt = 0
+# while True:
+#     try:
+#         subject = list(input().split(" "))
+#         grade = subject[2]  # 과목평점
+#         if grade != 'P':
+#             hj = float(subject[1]) # 학점
+#
+#             if grade in score:
+#                 all += hj
+#                 cnt += hj * score[grade]
+#     except:
+#         print(cnt/all)
+#         break
 
-score = {
-    "A+": 4.5,
-    "A0": 4.0,
-    "B+": 3.5,
-    "B": 3.0,
-    "C+": 2.5,
-    "C0": 2.0,
-    "D+": 1.5,
-    "D": 1.0,
-    "F": 0.0
-}
-all = 0
+
+croatia = ['c=', 'c-', 'dz=', 'd-', 'lj','nj', 's=', 'z=']
+s = input()
 cnt = 0
-while True:
-    try:
-        subject = list(input().split(" "))
-        grade = subject[2]  # 과목평점
-        if grade != 'P':
-            hj = float(subject[1]) # 학점
-
-            if grade in score:
-                all += hj
-                cnt += hj * score[grade]
-    except:
-        print(cnt/all)
-        break
+found_count = [x for x in croatia if x in s]
+print(found_count)
+for i in found_count:
+    s = s.replace(i, '')
+    cnt += 1
+cnt += len(list(s))
+print(cnt)
+    # print(s.find())
