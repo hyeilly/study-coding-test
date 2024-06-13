@@ -6,6 +6,7 @@ def print_seed():
     print("      |")
     print("      |")
 
+
 def chess_calc():
     chess = [1, 1, 2, 2, 2, 8]
     dh = list(map(int, input().split()))
@@ -15,6 +16,7 @@ def chess_calc():
     for r in result:
         print(r, end=' ')
 
+
 def palindrome():
     S = list(input())
     a = ''.join(S)
@@ -23,6 +25,7 @@ def palindrome():
         print(1)
     else:
         print(0)
+
 
 def word_study():
     S = list(input().lower())
@@ -37,6 +40,34 @@ def word_study():
         print("?")
     else:
         print(li[0].upper())
+
+
+def your_score():
+    score = {
+        "A+": 4.5,
+        "A0": 4.0,
+        "B+": 3.5,
+        "B0": 3.0,
+        "C+": 2.5,
+        "C0": 2.0,
+        "D+": 1.5,
+        "D0": 1.0,
+        "F": 0
+    }
+
+    hj_total = 0
+    cnt = 0
+
+    while True:
+        try:
+            subject, hj, grade = list(input().split(" "))
+            hj = float(hj)
+            if grade != 'P':
+                hj_total += hj
+                cnt += hj * score[grade]
+        except:
+            break
+    print('%.6f' % (cnt / hj_total))
 
 
 # N = int(input())
@@ -57,50 +88,20 @@ def word_study():
 #
 #
 #     print(star)
-    # for k in range(1, S):
-    #     print(k + (k - 1))
+# for k in range(1, S):
+#     print(k + (k - 1))
 
 
+# print(i * 3 - 1)
 
-    # print(i * 3 - 1)
 
-#
-# score = {
-#     "A+": 4.5,
-#     "A0": 4.0,
-#     "B+": 3.5,
-#     "B": 3.0,
-#     "C+": 2.5,
-#     "C0": 2.0,
-#     "D+": 1.5,
-#     "D": 1.0,
-#     "F": 0.0
-# }
-# all = 0
+# croatia = ['c=', 'c-', 'dz=', 'd-', 'lj', 'nj', 's=', 'z=']
+# s = input()
 # cnt = 0
-# while True:
-#     try:
-#         subject = list(input().split(" "))
-#         grade = subject[2]  # 과목평점
-#         if grade != 'P':
-#             hj = float(subject[1]) # 학점
-#
-#             if grade in score:
-#                 all += hj
-#                 cnt += hj * score[grade]
-#     except:
-#         print(cnt/all)
-#         break
-
-
-croatia = ['c=', 'c-', 'dz=', 'd-', 'lj','nj', 's=', 'z=']
-s = input()
-cnt = 0
-found_count = [x for x in croatia if x in s]
-print(found_count)
-for i in found_count:
-    s = s.replace(i, '')
-    cnt += 1
-cnt += len(list(s))
-print(cnt)
-    # print(s.find())
+# found_count = [x for x in croatia if x in s]
+# print(found_count)
+# for i in found_count:
+#     s = s.replace(i, '')
+#     cnt += 1
+# cnt += len(list(s))
+# print(cnt)
