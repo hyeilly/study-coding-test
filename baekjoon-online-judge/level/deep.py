@@ -1,3 +1,6 @@
+import re
+
+
 def print_seed():
     print("         ,r'\"7")
     print("r`-_   ,'  ,/")
@@ -69,39 +72,17 @@ def your_score():
             break
     print('%.6f' % (cnt / hj_total))
 
+def croatia():
+    croatia = ['c=', 'c-', 'dz=', 'd-', 'lj', 'nj', 's=', 'z=']
+    s = input()
+    for i in croatia:
+        s = s.replace(i, '*')
+    print(len(s))
 
-# N = int(input())
-# S = 2 * N - 1
-# S_h = int(S / 2)
-# S_half = int(S / 2)
-# t = 1
-# for i in range(S):
-#     S_h -= 1
-#     star = ''
-#     for j in range(abs(S_h+1), 0, -1):
-#         star += ' '
-#     if i > S_half:
-#         print(i)
-#
-#     else:
-#         print(i)
-#
-#
-#     print(star)
-# for k in range(1, S):
-#     print(k + (k - 1))
+def star():
+    n = int(input())
+    for i in range(1, n):
+        print(' ' * (n - i) + '*' * (2 * i - 1))
+    for i in range(n, 0, -1):
+        print(' ' * (n - i) + '*' * (2 * i - 1))
 
-
-# print(i * 3 - 1)
-
-
-# croatia = ['c=', 'c-', 'dz=', 'd-', 'lj', 'nj', 's=', 'z=']
-# s = input()
-# cnt = 0
-# found_count = [x for x in croatia if x in s]
-# print(found_count)
-# for i in found_count:
-#     s = s.replace(i, '')
-#     cnt += 1
-# cnt += len(list(s))
-# print(cnt)
