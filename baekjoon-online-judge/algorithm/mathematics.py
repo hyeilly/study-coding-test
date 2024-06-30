@@ -25,4 +25,7 @@ def count_number():
     for l in li:
         print(l)
 
-
+def sumAB():
+    A = int(input())
+    B = int(input())
+    print(A + B)
