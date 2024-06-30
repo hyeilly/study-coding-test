@@ -29,3 +29,11 @@ def sumAB():
     A = int(input())
     B = int(input())
     print(A + B)
+
+def factorial():
+    A = int(input())
+    result = 1
+    while(A != 0):
+        result *= A
+        A -= 1
+    print(result)
