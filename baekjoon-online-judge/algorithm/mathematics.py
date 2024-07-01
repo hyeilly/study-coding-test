@@ -37,3 +37,20 @@ def factorial():
         result *= A
         A -= 1
     print(result)
+
+def exceed_avg():
+    num = int(input())
+    for _ in range(num):
+        sList = list(map(int, input().split()))
+        s = sList[0]
+        s_list = sList[1:]
+        avg = sum(s_list) / s
+        cnt = 0
+        for S in s_list:
+            if avg < S:
+                cnt += 1
+        rate = cnt / s * 100
+        print(f'{rate:.3f}%')
+
+
+
