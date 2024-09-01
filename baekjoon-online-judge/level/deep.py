@@ -86,3 +86,20 @@ def star():
     for i in range(n, 0, -1):
         print(' ' * (n - i) + '*' * (2 * i - 1))
 
+def group_word_checker():
+    n = int(input())
+    result = n
+    for _ in range(n):
+        groupWord = []
+        word = input()
+        for w in word:
+            if w not in groupWord:
+                groupWord.append(w)
+            else:
+                if groupWord[len(groupWord)-1] != w:
+                    result -= 1
+                    break
+    print(result)
+
+
+group_word_checker()
