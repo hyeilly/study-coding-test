@@ -100,6 +100,3 @@ def group_word_checker():
                     result -= 1
                     break
     print(result)
-
-
-group_word_checker()
